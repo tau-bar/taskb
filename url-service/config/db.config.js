@@ -1,5 +1,4 @@
-// import mongoose package
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 // declare a Database string URI
 const DB_URI = 'mongodb://localhost:27017/urlshortener'
@@ -12,5 +11,4 @@ mongoose.connect(DB_URI, {
 
 const connection = mongoose.connection
 
-// export the connection object
-module.exports = connection
+export default connection

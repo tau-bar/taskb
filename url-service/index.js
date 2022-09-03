@@ -1,15 +1,22 @@
-const express = require("express")
+import express from 'express';
+import connection from './config/db.config.js'
+import deleteRouter from './routes/delete-url.js'
+import createRouter from './routes/create-url.js'
+import getRouter from './routes/get-url.js'
+import updateRouter from './routes/edit-url.js'
+
 const app = express()
 
-const connection = require('./config/db.config')
 connection.once('open', () => console.log('Database is connected.'))
 connection.on('error', () => console.log('Could not connect to database.'))
 
 app.use(express.json({extended: false})) 
-app.use('/api/url', require('./routes/get-url'))
-app.use('/api/url/create', require('./routes/create-url'))
-app.use('/api/url/delete', require('./routes/delete-url'))
-app.use('/api/url/update', require('./routes/edit-url'))
+app.use('/api/url', getRouter)
+app.use('/api/url/create', createRouter)
+app.use('/api/url/delete', deleteRouter)
+app.use('/api/url/update', updateRouter)
 
 const PORT = process.env.PORT || 8000
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`))
+
+export default app;

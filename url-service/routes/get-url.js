@@ -1,8 +1,7 @@
-const express = require('express')
+import express from 'express'
+import Url from '../models/UrlModel.js'
 
 const router = express.Router()
-
-const Url = require('../models/UrlModel')
 
 router.get('/:code', async (req, res) => {
     try {
@@ -24,4 +23,4 @@ router.get('/:code', async (req, res) => {
 })
 
 
-module.exports = router
+export default router;

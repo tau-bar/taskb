@@ -1,8 +1,8 @@
-const express = require('express')
-const validUrl = require('valid-url')
-const shortid = require('shortid')
+import express from 'express';
+import validUrl from 'valid-url';
+import Url from '../models/UrlModel.js';
+
 const router = express.Router()
-const Url = require('../models/UrlModel')
 
 const baseUrl = 'localhost:8000/api/url'
 
@@ -39,4 +39,4 @@ router.put('/:code', async (req, res) => {
     }
 })
 
-module.exports = router
+export default router;
