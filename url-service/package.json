@@ -10,5 +10,8 @@
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
     "mocha": "^10.0.0"
+  },
+  "scripts": {
+    "dev": "nodemon index.js"
   }
 }
