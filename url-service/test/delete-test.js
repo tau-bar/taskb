@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../index.js';
 import Url from '../models/UrlModel.js'
-import { OperationError, RouteError } from '../utils/errors.js';
+import { RouteError } from '../utils/errors.js';
 import { ResponseMessage } from '../utils/messages.js';
 import { urls } from "./dummy.js" 
 
@@ -25,7 +25,7 @@ describe('Test /DELETE route with valid and invalid input', () => {
         }))
     })
 
-    describe('Valid url code for /DELETE should retrieve an existing URL', () => {
+    describe('Valid url code for /DELETE should delete an existing URL', () => {
         it('it should DELETE an existing url', (done) => {
             chai.request(app)
             .delete(`/api/url/delete/${urls[0].urlCode}`)
