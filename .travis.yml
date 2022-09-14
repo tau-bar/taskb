@@ -3,6 +3,7 @@ node_js:
   - lts/*
 script:
   - echo '*****Starting build*****'
+  - cd url-service
   - echo 'Installing dependencies'
   - npm install
   - echo 'Running tests'
