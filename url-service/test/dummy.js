@@ -1,10 +1,13 @@
 export const urls = [
     {
-        longUrl: "https://www.nus.edu.sg/"
+        urlCode: "aaaaaaaaa",
+        longUrl: "https://www.google.com/"
     },
     {
-        longUrl: "https://enterprise.nus.edu.sg/"
+        urlCode: "bbbbbbbbb",
+        longUrl: "https://www.facebook.com/"
     }, {
-        longUrl: "https://emergency.nus.edu.sg/"
+        urlCode: "ccccccccc",
+        longUrl: "https://www.linkedin.com/"
     }
 ]

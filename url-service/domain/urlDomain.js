@@ -1,10 +1,12 @@
 import validUrl from 'valid-url';
 import shortid from 'shortid';
 import { addUrl, deleteUrlByUrlCode, getUrlByUrlCode, updateUrl } from '../repository/urlRepository.js';
+import { ValidationError } from '../utils/errors.js';
+import { ResponseMessage } from '../utils/messages.js';
 
 export const createUrl = async (longUrl) => {
     if (!validUrl.isUri(longUrl)) {
-        throw new Error("The longUrl provided is invalid.");
+        throw new Error(ValidationError.INVALID_LONG_URL);
     }
 
     const urlCode = shortid.generate();
@@ -18,7 +20,7 @@ export const createUrl = async (longUrl) => {
 
 export const editUrl = async (longUrl, urlCode) => {
     if (!validUrl.isUri(longUrl)) {
-        throw new Error("The longUrl provided is invalid.");
+        throw new Error(ValidationError.INVALID_LONG_URL);
     }
 
     const result = await updateUrl(longUrl, urlCode);
@@ -27,17 +29,17 @@ export const editUrl = async (longUrl, urlCode) => {
         if (matchedCount === 1 && modifiedCount === 1) {
             return {
                 "ok": true,
-                "message": "The longUrl has been edited."
+                "message": ResponseMessage.URL_EDIT_SUCCESS,
             }
         } else if (matchedCount === 1 && modifiedCount === 0) {
             return {
                 "ok": true,
-                "message": "The longUrl provided is not different."
+                "message": ResponseMessage.URL_NOT_DIFFERENT,
             }
         } else {
             return {
                 "ok": false,
-                "message": "Could not find the url code provided."
+                "message": ResponseMessage.URL_NOT_FOUND,
             } 
         }
     } else {
@@ -61,12 +63,12 @@ export const deleteUrl = async (urlCode) => {
         if (deletedCount === 1) {
             return {
                 "found": true,
-                "message": "URL successfully deleted."
+                "message": ResponseMessage.URL_DELETE_SUCCESS
             }
         } else {
             return {
                 "found": false,
-                "message": "URL was not found."
+                "message": ResponseMessage.URL_NOT_FOUND
             }
         }
     } else {

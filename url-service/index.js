@@ -4,6 +4,7 @@ import deleteRouter from './routes/delete-url.js'
 import createRouter from './routes/create-url.js'
 import getRouter from './routes/get-url.js'
 import updateRouter from './routes/edit-url.js'
+import { RouteError } from './utils/errors.js';
 
 const app = express()
 
@@ -17,7 +18,7 @@ app.use('/api/url/create', createRouter)
 app.use('/api/url/delete', deleteRouter)
 app.use('/api/url/update', updateRouter)
 app.use('*', function(req, res){
-    res.status(404).send('This endpoint does not exist.');
+    res.status(404).json(RouteError.INVALID_ENDPOINT);
   });
 
 const PORT = process.env.PORT || 8000
