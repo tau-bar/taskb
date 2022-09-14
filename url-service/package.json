@@ -14,6 +14,6 @@
   },
   "scripts": {
     "dev": "nodemon index.js",
-    "test": "set NODE_ENV=test&& mocha --timeout 60000"
+    "test": "set NODE_ENV=test&& mocha --timeout 120000"
   }
 }
