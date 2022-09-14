@@ -23,19 +23,24 @@ export const handleEditUrl = async (req, res) => {
         const { code } = req.params;
 
         if (!longUrl) {
-            res.json("Invalid request body, longUrl not provided.")
+            res.status(400).json("Invalid request body, longUrl not provided.")
         }
 
         if (!code) {
-            res.json("Invalid request body, url code not provided.")
+            res.status(400).json("Invalid request body, url code not provided.")
         }
 
         const result = await editUrl(longUrl, code);
         if (result) {
             const { message } = result;
-            res.json(message);
+            if (result.ok) {
+                res.json(message);
+            } else {
+                res.status(404).json(message);
+            }
+            
         } else {
-            res.json("Could not find the shortened URL provided.")
+            res.status(404).json("Could not find the shortened URL provided.")
         }
     } catch (err) {
         res.status(400).json(err.toString())
@@ -47,8 +52,13 @@ export const handleDeleteUrl = async (req, res) => {
         const { code } = req.params;
         const result = await deleteUrl(code);
         if (result) {
-            const { message } = result;
-            res.json(message)
+            const { found, message } = result;
+            if (found) {
+                res.json(message)
+            } else {
+                res.status(404).json(message)
+            }
+            
         } else {
             res.json("Could not delete url from server.")
         }
@@ -63,7 +73,7 @@ export const handleCreateUrl = async (req, res) => {
     try {
         const { longUrl } = req.body;
         if (!longUrl) {
-            res.json("Invalid request body, longUrl not provided.")
+            res.status(400).json("Invalid request body, longUrl not provided.")
         }
         const url = await createUrl(longUrl);
 

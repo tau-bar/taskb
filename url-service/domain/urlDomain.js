@@ -26,14 +26,17 @@ export const editUrl = async (longUrl, urlCode) => {
         const { matchedCount, modifiedCount } = result;
         if (matchedCount === 1 && modifiedCount === 1) {
             return {
+                "ok": true,
                 "message": "The longUrl has been edited."
             }
         } else if (matchedCount === 1 && modifiedCount === 0) {
             return {
+                "ok": true,
                 "message": "The longUrl provided is not different."
             }
         } else {
             return {
+                "ok": false,
                 "message": "Could not find the url code provided."
             } 
         }
@@ -57,10 +60,12 @@ export const deleteUrl = async (urlCode) => {
         const { deletedCount } = result;
         if (deletedCount === 1) {
             return {
+                "found": true,
                 "message": "URL successfully deleted."
             }
         } else {
             return {
+                "found": false,
                 "message": "URL was not found."
             }
         }
