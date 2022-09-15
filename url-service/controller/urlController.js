@@ -1,4 +1,4 @@
-import { createUrl, deleteUrl, editUrl, getUrl } from '../domain/urlDomain.js';
+import { createUrl, deleteUrl, editUrl, getAll, getUrl } from '../domain/urlDomain.js';
 import { OperationError, RequestError } from '../utils/errors.js';
 
 export const handleGetUrl = async (req, res) => {
@@ -11,6 +11,16 @@ export const handleGetUrl = async (req, res) => {
             return res.status(404).json(OperationError.URL_NOT_FOUND)
         }
 
+    }
+    catch (err) {
+        res.status(400).json(err.toString())
+    }
+}
+
+export const handleGetAllUrls = async (req, res) => {
+    try {
+        const result = await getAll();
+        res.status(200).send(result);
     }
     catch (err) {
         res.status(400).json(err.toString())

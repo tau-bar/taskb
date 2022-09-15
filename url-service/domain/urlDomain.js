@@ -1,6 +1,6 @@
 import validUrl from 'valid-url';
 import shortid from 'shortid';
-import { addUrl, deleteUrlByUrlCode, getUrlByUrlCode, updateUrl } from '../repository/urlRepository.js';
+import { addUrl, deleteUrlByUrlCode, getAllUrls, getUrlByUrlCode, updateUrl } from '../repository/urlRepository.js';
 import { ValidationError } from '../utils/errors.js';
 import { ResponseMessage } from '../utils/messages.js';
 
@@ -54,6 +54,11 @@ export const getUrl = async (urlCode) => {
     } else {
         return null;
     }
+}
+
+export const getAll = async () => {
+    const result = await getAllUrls();
+    return result;
 }
 
 export const deleteUrl = async (urlCode) => {

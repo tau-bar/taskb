@@ -10,6 +10,16 @@ export const getUrlByUrlCode = async (code) => {
     }
 }
 
+export const getAllUrls = async () => {
+    try {
+        let result = await Url.find();
+        return result;
+    } catch (err) {
+        console.error("ERROR: Failed to retrieve urls.", err);
+        throw err;
+    }
+}
+
 export const addUrl = async (longUrl, urlCode) => {
     try {
         let url = await Url.findOne({ longUrl, urlCode })
