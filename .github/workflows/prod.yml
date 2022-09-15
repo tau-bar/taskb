@@ -8,8 +8,8 @@ jobs:
     name: GAE Deploy
     runs-on: ubuntu-latest
     steps:
-      - run: ls
       - uses: actions/checkout@v2
+      - run: cd url-service
       - uses: google-github-actions/deploy-appengine@main
         with:
           credentials: ${{ secrets.gcp_credentials }}
