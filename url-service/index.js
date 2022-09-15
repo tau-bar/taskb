@@ -5,15 +5,17 @@ import createRouter from './routes/create-url.js'
 import getRouter from './routes/get-url.js'
 import updateRouter from './routes/edit-url.js'
 import { RouteError } from './utils/errors.js';
+import cors from 'cors'
 
 const app = express()
 
 connection.once('open', () => console.log('Database is connected.'))
 connection.on('error', () => console.log('Could not connect to database.'))
 
-app.use(function(req, res, next) {
+app.use(cors(), function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
   next();
 });
 
