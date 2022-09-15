@@ -4,16 +4,19 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 import UrlShortenPage from './pages/UrlShortenPage';
+import UrlListPage from './pages/UrlListPage';
 
 function App() {
   return (
     <div className='App'>
     <Router>
+    <Routes>
+        <Route exact path="/list" element={<UrlListPage />} />
+      </Routes>
       <Routes>
-        <Route exact path="/" element={<UrlShortenPage />} />
+      <Route path="/" element={<UrlShortenPage />} />
       </Routes>
     </Router>
     </div>
