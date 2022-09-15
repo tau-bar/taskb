@@ -9,7 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const UrlList = () => {
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <List sx={{ border: 1, borderColor: 'primary.main', width: '100%', bgcolor: 'background.paper' }}>
       {[0, 1, 2, 3].map((value) => {
         const labelId = `checkbox-list-label-${value}`;
 
@@ -30,7 +30,7 @@ const UrlList = () => {
             disablePadding
           >
             <ListItemButton role={undefined} dense>
-              <ListItemText id={labelId} primary={`URL ${value}`} />
+              <ListItemText id={labelId} primary={`URL ${value}`} secondary={'actual url'}/>
             </ListItemButton>
           </ListItem>
         );

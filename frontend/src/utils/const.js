@@ -1,0 +1,1 @@
+export const PRODUCTION_BASE_URL = "https://url-shortener-362611.as.r.appspot.com"
