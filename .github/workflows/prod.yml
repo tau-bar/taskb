@@ -15,7 +15,7 @@ jobs:
         with:
           credentials_json: '$${{ secrets.gcp_credentials }}'
       - name: Google App Engine
-        uses: google-github-actions/deploy-appengine@master
+        uses: google-github-actions/deploy-appengine@main
         with:
           project_id: url-shortener-362611
           version: master
