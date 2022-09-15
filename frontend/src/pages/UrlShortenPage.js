@@ -22,21 +22,21 @@ const UrlShortenPage = () => {
 
   return (
     <ThemeProvider theme={theme}>
-    <Container component="main" maxWidth="xs">
+    <Container component="main">
       <CssBaseline />
       <Box
         sx={{
           marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
+          justifyContent: 'center',
           alignItems: 'center',
         }}
         >
-        <Typography component="h1" variant="h5">
-          Taufiq's Url Shortener
+        <Typography component="h1" variant="h3">
+          Enter your long url here:
         </Typography>
-        <Box component="form" noValidate onSubmit={() => {}} sx={{ mt: 3 }}>
-          <Grid container spacing={2}>
+        <Box component="form" onSubmit={() => {}} sx={{ width: "100%", mt: 3 }}>
             <Grid item xs={12}>
               <TextField
                 fullWidth
@@ -45,14 +45,13 @@ const UrlShortenPage = () => {
                 name="longUrl"
               />
             </Grid>
-          </Grid>
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ width: 200, mt: 3, mb: 2 }}
           >
-            Shorten URL
+            Shorten!
           </Button>
       </Box>
     </Box>

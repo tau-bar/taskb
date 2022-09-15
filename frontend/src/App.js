@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -7,18 +6,20 @@ import {
 } from "react-router-dom";
 import UrlShortenPage from './pages/UrlShortenPage';
 import UrlListPage from './pages/UrlListPage';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className='App'>
-    <Router>
-    <Routes>
-        <Route exact path="/list" element={<UrlListPage />} />
-      </Routes>
-      <Routes>
-      <Route path="/" element={<UrlShortenPage />} />
-      </Routes>
-    </Router>
+      <Router>
+      <Navbar/>
+        <Routes>
+          <Route exact path="/list" element={<UrlListPage />} />
+        </Routes>
+        <Routes>
+          <Route path="/" element={<UrlShortenPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
