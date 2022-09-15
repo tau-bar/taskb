@@ -8,8 +8,17 @@ jobs:
     name: GAE Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: cd url-service
-      - uses: google-github-actions/deploy-appengine@main
+      - name: Checkout
+        uses: actions/checkout@v2
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v0'
         with:
-          credentials: ${{ secrets.gcp_credentials }}
+          credentials_json: '$${{ secrets.gcp_credentials }}'
+      - name: Google App Engine
+        run: cd url-service
+        uses: google-github-actions/deploy-appengine@master
+        with:
+          project_id: url-shortener-362611
+          version: master
+          flags: --no-cache
+          deliverables: app.yaml
