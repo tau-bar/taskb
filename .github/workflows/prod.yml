@@ -20,4 +20,4 @@ jobs:
           project_id: url-shortener-362611
           version: master
           flags: --no-cache
-          deliverables: app.yaml
+          deliverables: ./url-service/app.yaml
