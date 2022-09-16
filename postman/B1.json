@@ -7,106 +7,493 @@
 	},
 	"item": [
 		{
-			"name": "Create Url",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"longUrl\": \"https://www.youtube.com/\" \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "localhost",
+			"item": [
+				{
+					"name": "Create Url",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"longUrl\": \"https://www.youtube.com\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-shortener-baseurl}}/api/url/create",
+							"host": [
+								"{{url-shortener-baseurl}}"
+							],
+							"path": [
+								"api",
+								"url",
+								"create"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{url-shortener-baseurl}}/api/url/create",
-					"host": [
-						"{{url-shortener-baseurl}}"
-					],
-					"path": [
-						"api",
-						"url",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Url",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url-shortener-baseurl}}/api/url/61bVT-eQW",
-					"host": [
-						"{{url-shortener-baseurl}}"
-					],
-					"path": [
-						"api",
-						"url",
-						"61bVT-eQW"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Url",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{url-shortener-baseurl}}/api/url/delete/61bVT-eQW",
-					"host": [
-						"{{url-shortener-baseurl}}"
-					],
-					"path": [
-						"api",
-						"url",
-						"delete",
-						"61bVT-eQW"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Url",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"longUrl\": \"http://expressjs.com/en/guide/routing.html\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Get Url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-shortener-baseurl}}/api/url/Xsx4nPoRv",
+							"host": [
+								"{{url-shortener-baseurl}}"
+							],
+							"path": [
+								"api",
+								"url",
+								"Xsx4nPoRv"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{url-shortener-baseurl}}/api/url/update/61bVT-eQW",
-					"host": [
-						"{{url-shortener-baseurl}}"
-					],
-					"path": [
-						"api",
-						"url",
-						"update",
-						"61bVT-eQW"
+				{
+					"name": "Get All Url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-shortener-baseurl}}/api/url/all",
+							"host": [
+								"{{url-shortener-baseurl}}"
+							],
+							"path": [
+								"api",
+								"url",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Url",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"longUrl\": \"http://expressjs.com/en/guide/routing.html\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-shortener-baseurl}}/api/url/update/Xsx4nPoRv",
+							"host": [
+								"{{url-shortener-baseurl}}"
+							],
+							"path": [
+								"api",
+								"url",
+								"update",
+								"Xsx4nPoRv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Url",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url-shortener-baseurl}}/api/url/delete/Xsx4nPoRv",
+							"host": [
+								"{{url-shortener-baseurl}}"
+							],
+							"path": [
+								"api",
+								"url",
+								"delete",
+								"Xsx4nPoRv"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "production",
+			"item": [
+				{
+					"name": "valid",
+					"item": [
+						{
+							"name": "Create Url GCP",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"longUrl\": \"https://www.youtube.com\"  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/create",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Url GCP",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/-PSOHRQO9",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"-PSOHRQO9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Url GCP",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"longUrl\": \"http://expressjs.com/en/guide/routing.html\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/update/-PSOHRQO9",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"update",
+										"-PSOHRQO9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Url GCP",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/delete/-PSOHRQO9",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"delete",
+										"-PSOHRQO9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "invalid",
+					"item": [
+						{
+							"name": "Invalid URL Code",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/invalid",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"invalid"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid Route",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url-shortener-production-url}}/ap",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"ap"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Empty body",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/create",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid body",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"longUrl\": \"invalid\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/create",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Empty body",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/update/-PSOHRQO9",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"update",
+										"-PSOHRQO9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid URL Code",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"longUrl\": \"http://expressjs.com/en/guide/routing.html\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/update/invalid",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"update",
+										"invalid"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No URL Code",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"longUrl\": \"http://expressjs.com/en/guide/routing.html\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/update/",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"update",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid longUrl",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"longUrl\": \"invalid\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/update/-PSOHRQO9",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"update",
+										"-PSOHRQO9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid URL Code",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/delete/invalid",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"delete",
+										"invalid"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "No URL Code",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url-shortener-production-url}}/api/url/delete/",
+									"host": [
+										"{{url-shortener-production-url}}"
+									],
+									"path": [
+										"api",
+										"url",
+										"delete",
+										""
+									]
+								}
+							},
+							"response": []
+						}
 					]
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"variable": [
 		{
 			"key": "url-shortener-baseurl",
 			"value": "localhost:8000"
+		},
+		{
+			"key": "url-shortener-production-url",
+			"value": "https://url-shortener-362611.as.r.appspot.com"
 		}
 	]
 }
