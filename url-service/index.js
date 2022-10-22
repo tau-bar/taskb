@@ -6,6 +6,7 @@ import getRouter from './routes/get-url.js'
 import updateRouter from './routes/edit-url.js'
 import { RouteError } from './utils/errors.js';
 import cors from 'cors'
+import { decodeIDToken } from './utils/auth.js';
 
 const app = express()
 
@@ -21,7 +22,7 @@ app.use(cors(), function(req, res, next) {
 
 app.use(express.json({extended: false})) 
 
-app.use('/api/url', getRouter)
+app.use('/api/url', decodeIDToken, getRouter)
 app.use('/api/url/create', createRouter)
 app.use('/api/url/delete', deleteRouter)
 app.use('/api/url/update', updateRouter)
