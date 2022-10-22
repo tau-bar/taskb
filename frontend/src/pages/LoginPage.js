@@ -30,7 +30,8 @@ const LoginPage = () => {
     const password = data.get('password');
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-        navigate("/")
+        navigate("/");
+        console.log(userCredential)
     })
     .catch((error) => {
         const errorCode = error.code;

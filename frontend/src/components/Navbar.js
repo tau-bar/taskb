@@ -146,13 +146,23 @@ const Navbar = () => {
             ))}
           </Box>
 
-          {userId && <Button
+          {userId ?
+           <Button
                 key="log-out"
                 onClick={handleLogout}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 Log Out
-          </Button>}
+          </Button>
+          :
+          <Button
+                key="log-in"
+                onClick={() => navigate("/login")}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Log In
+          </Button>
+          }
         </Toolbar>
       </Container>
     </AppBar>

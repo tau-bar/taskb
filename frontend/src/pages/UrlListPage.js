@@ -5,6 +5,9 @@ import { Box, Container, Stack } from "@mui/system";
 import { Alert, CssBaseline, Typography } from "@mui/material";
 import axios from "axios";
 import { PRODUCTION_BASE_URL } from "../utils/const";
+import { useSelector } from "react-redux";
+import { selectUserToken } from "../redux/userSlice";
+import { getAuth } from "firebase/auth"
 
 const theme = createTheme();
 
@@ -13,6 +16,9 @@ const UrlListPage = () => {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
+  const userToken = useSelector(selectUserToken);
+  
+
   useEffect(() => {
     handleGetList();
   }, []);
@@ -20,11 +26,15 @@ const UrlListPage = () => {
   const handleGetList = () => {
     setError('');
     setMessage('');
-    axios.get(`${PRODUCTION_BASE_URL}/api/url/all`)
+    axios.get(`${PRODUCTION_BASE_URL}/api/url/all`, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      }
+    })
     .then(res => {
       setList(res.data)
     }).catch((err) => {
-      setError(err);
+      setError("Not authenticated");
     })
   }
 

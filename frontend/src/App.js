@@ -14,7 +14,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUserId, setUserId, setUsername } from './redux/userSlice';
+import { selectUserId, selectUserToken, setUserId, setUsername, setUserToken } from './redux/userSlice';
 import { useState } from 'react';
 import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
@@ -29,10 +29,10 @@ function App() {
     if (user) {
       dispatch(setUsername({ username: user.email }));
 		  dispatch(setUserId({ userId: user.uid }));
+      dispatch(setUserToken({ token: user.accessToken }));
     }
 
     setIsLoading(false);
-
   })
 
   if (isLoading) {
