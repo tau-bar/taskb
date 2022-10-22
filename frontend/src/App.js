@@ -43,7 +43,6 @@ function App() {
     )
   }
 
-  if (!userId) {
     return (
       <div className='App'>
         <Router>
@@ -51,31 +50,16 @@ function App() {
           <Routes>
             <Route exact path="/login" element={<LoginPage />} />
             <Route exact path="/signup" element={<SignUpPage />} />
+            <Route exact path="/list" element={<UrlListPage />} />
+            <Route path="/" element={<UrlShortenPage />} />
             <Route
-                    path="*"
-                    element={<Navigate to="/login" replace />}
-                  />
+                      path="*"
+                      element={<Navigate to="/" replace />}
+            />
           </Routes>
         </Router>
       </div>
     )
-  }
-  
-  return (
-    <div className='App'>
-      <Router>
-      <Navbar/>
-        <Routes>
-          <Route exact path="/list" element={<UrlListPage />} />
-          <Route path="/" element={<UrlShortenPage />} />
-          <Route
-                    path="*"
-                    element={<Navigate to="/" replace />}
-          />
-        </Routes>
-      </Router>
-    </div>
-  );
 }
 
 export default App;

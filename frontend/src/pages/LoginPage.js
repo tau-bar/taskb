@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,8 +17,13 @@ import { useNavigate } from 'react-router-dom';
 const theme = createTheme();
 
 const LoginPage = () => {
+  const [ emailError, setEmailError ] = useState("");
+  const [ passwordError, setPasswordError ] = useState("");
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
+    setEmailError("");
+    setPasswordError("");
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
@@ -29,7 +34,15 @@ const LoginPage = () => {
     })
     .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+        if (errorCode === "auth/wrong-password") {
+          setPasswordError("Incorrect password");
+          return;
+        }
+
+        if (errorCode === "auth/user-not-found") {
+          setEmailError("Incorrect email");
+          return;
+        }
     });
   };
 
@@ -53,9 +66,11 @@ const LoginPage = () => {
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
+              error={emailError !== ""}
               margin="normal"
               required
               fullWidth
+              helperText={emailError}
               id="email"
               label="Email Address"
               name="email"
@@ -63,6 +78,8 @@ const LoginPage = () => {
               autoFocus
             />
             <TextField
+              error={passwordError !== ""}
+              helperText={passwordError}
               margin="normal"
               required
               fullWidth

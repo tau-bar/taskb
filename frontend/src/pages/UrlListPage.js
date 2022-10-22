@@ -8,12 +8,6 @@ import { PRODUCTION_BASE_URL } from "../utils/const";
 
 const theme = createTheme();
 
-
-
-
-
-
-
 const UrlListPage = () => {  
   const [list, setList] = useState([]);
   const [error, setError] = useState('');

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,7 +17,12 @@ import axios from "axios"
 const theme = createTheme();
 
 const SignUpPage = () => {
+  const [ emailError, setEmailError ] = useState("");
+  const [ passwordError, setPasswordError ] = useState("");
+  
   const handleSubmit = (event) => {
+    setEmailError("");
+    setPasswordError("");
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
@@ -32,8 +37,20 @@ const SignUpPage = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+        if (errorCode === "auth/weak-password") {
+          setPasswordError("Password should be at least 6 characters ");
+          return;
+        }
+
+        if (errorCode === "auth/email-already-in-use") {
+          setEmailError("Email already in use")
+          return;
+        }
+
+        if (errorCode === "auth/invalid-email") {
+          setEmailError("Invalid email");
+          return;
+        }
       });
     
   };
@@ -60,6 +77,8 @@ const SignUpPage = () => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                  error={emailError !== ""}
+                  helperText={emailError}
                   required
                   fullWidth
                   id="email"
@@ -70,6 +89,8 @@ const SignUpPage = () => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  error={passwordError !== ""}
+                  helperText={passwordError}
                   required
                   fullWidth
                   name="password"
