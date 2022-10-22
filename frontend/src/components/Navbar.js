@@ -11,6 +11,9 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AppShortcutIcon from '@mui/icons-material/AppShortcut';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserId, setUserId, setUsername } from '../redux/userSlice';
+import auth from '../config/firebaseConfig';
 
 const pages = [
     {
@@ -24,8 +27,19 @@ const pages = [
 ];
 
 const Navbar = () => {
+  const userId = useSelector(selectUserId);
+  const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    auth.signOut()
+    .then(() => {
+      navigate("/login");
+      dispatch(setUsername({ username: "" }));
+		  dispatch(setUserId({ userId: "" }));
+    })
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -131,6 +145,14 @@ const Navbar = () => {
               </Button>
             ))}
           </Box>
+
+          {userId && <Button
+                key="log-out"
+                onClick={handleLogout}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Log Out
+          </Button>}
         </Toolbar>
       </Container>
     </AppBar>
